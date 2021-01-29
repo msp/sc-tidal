@@ -27,8 +27,8 @@ s.options.memSize = 8192 * 256; // increase this if you get "alloc failed"
 s.options.maxNodes = 1024 * 32; // increase this if you are getting drop outs and the message "too many nodes"
 
 
-// s.options.numOutputBusChannels = 32; // Loopback composite devices
-s.options.numOutputBusChannels = 2; // Multi channel
+s.options.numOutputBusChannels = 32; // Loopback composite devices
+//s.options.numOutputBusChannels = 2; // Multi channel
 s.options.numInputBusChannels = 2;
 
 // boot the server and start SuperDirt
@@ -49,13 +49,14 @@ s.options.device = "Tidal into Live";
 s.waitForBoot {
     ~dirt = SuperDirt(2, s);
     // ~dirt = SuperDirt(8, s);   // 8 channel
-    // ~dirt = SuperDirt(4, s);
+	// ~dirt = SuperDirt(4, s);
     ~dirt.loadSoundFiles;
 	// ~dirt.loadSoundFiles("/data/music/AudioSources/Samples/leve-tidal-samples/*");
     ~dirt.loadSoundFiles("/data/Dropbox-spatial/Dropbox/spatial/music/AudioSources/oily-cart-awu-samples/*");
 
 	// s.sync; // optionally: wait for samples to be read
-	~dirt.start(57120, 0 ! 12);   // start listening on port 57120, create two busses each sending audio to channel 0
+	// ~dirt.start(57120, 0 ! 12);   // start listening on port 57120, create two busses each sending audio to channel 0
+	~dirt.start(57120, (0, 2 .. 31));
 
 	// optional, needed for convenient access from sclang:
 	(
