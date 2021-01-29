@@ -51,17 +51,22 @@ s.waitForBoot {
     // // ~dirt.start(57120, (0, 2 .. 4));	// additive play time
     // // ~dirt.start(57120, [0, 0, 0, 0, 0, 0, 0, 0]); // 8 channel
     // // ~dirt.start(57120, [0, 0, 0, 0, 0]); // 4 channel
+
+	includePath = PathName.new(thisProcess.nowExecutingPath.dirname+/+"include/");
+
+	includePath.postln;
+	includePath.entries.postln;
+
+	includePath.files.do{|aFile|
+		"\nloading >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".postln;
+		aFile.fullPath.postln;
+		load(aFile.fullPath);
+	};
+
 }
 )
 
 // s.latency = 0.3; // increase this if you get "late" messages
-
-
-
-
-
-
-
 
 
 
