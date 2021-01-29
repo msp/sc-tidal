@@ -1,7 +1,27 @@
 (
-//s.quit;
+// s.quit;
 
-s.options.numBuffers = 1024 * 256; // increase this if you need to load more samples
+var includePath;
+
+// configure the audio outputs
+~out1 = 0;
+~out2 = 2;
+~out3 = 4;
+~out4 = 6;
+~out5 = 8;
+~out6 = 10;
+~out7 = 12;
+~out8 = 14;
+~out9 = 16;
+~out10 = 18;
+~out11 = 20;
+~out12 = 22;
+~out13 = 24;
+~out14 = 26;
+~out15 = 28;
+~out16 = 30;
+
+s.options.numBuffers = 1024 * 1024; // increase this if you need to load more samples
 // s.options.memSize = 8192 * 128; // increase this if you get "alloc failed" messages
 s.options.memSize = 8192 * 256; // increase this if you get "alloc failed"
 s.options.maxNodes = 1024 * 32; // increase this if you are getting drop outs and the message "too many nodes"
@@ -18,9 +38,11 @@ s.options.numInputBusChannels = 2;
 // s.options.device = "RME + ES-8 + SC 2";
 // s.options.device = "Work dammit";
 // s.options.device = "Supercollider";
-s.options.device = "Fireface UCX (23733485)";
+// s.options.device = "Fireface UCX (23733485)";
 // s.options.device = "Saffire 6USB";
-
+s.options.device = "Tidal into Live";
+// s.options.device = "MacBook Pro Speakers";
+// s.options.device = "External Headphones";
 
 ~dirt.free; // free old instance
 
@@ -29,8 +51,8 @@ s.waitForBoot {
     // ~dirt = SuperDirt(8, s);   // 8 channel
     // ~dirt = SuperDirt(4, s);
     ~dirt.loadSoundFiles;
-    // ~dirt.loadSoundFiles("/data/music/AudioSources/Samples/leve-tidal-samples/*");
-    ~dirt.loadSoundFiles("/Dropbox-shared/oily-cart-awu-samples/*");
+	// ~dirt.loadSoundFiles("/data/music/AudioSources/Samples/leve-tidal-samples/*");
+    ~dirt.loadSoundFiles("/data/Dropbox-spatial/Dropbox/spatial/music/AudioSources/oily-cart-awu-samples/*");
 
 	// s.sync; // optionally: wait for samples to be read
 	~dirt.start(57120, 0 ! 12);   // start listening on port 57120, create two busses each sending audio to channel 0
