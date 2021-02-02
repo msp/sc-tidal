@@ -1,6 +1,9 @@
 (
 // s.quit;
 
+var workingDir = "/data/development/tidal-cycles/201805/sc/";
+var synthDefsFile = "20210128.scd";
+var synthDefs;
 var includePath;
 
 // configure the audio outputs
@@ -86,6 +89,11 @@ s.waitForBoot {
 		load(aFile.fullPath);
 	};
 
+	synthDefs = PathName.new(workingDir+/+synthDefsFile);
+	"\nloading >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>".postln;
+	synthDefs.postln;
+
+	load(synthDefs.fullPath);
 }
 )
 
